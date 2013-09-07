@@ -1,8 +1,9 @@
 var MongoClient = require('mongodb').MongoClient,
  request = require('request'),
  cheerio = require('cheerio');
-
-MongoClient.connect('mongodb://admin:pass@paulo.mongohq.com:10035/vagrantBaseBox',function(err,db) {
+var username = process.env.MONGOUSER;
+var password = process.env.MONGOPASS;
+MongoClient.connect('mongodb://'+ username +':'+ password +'@paulo.mongohq.com:10035/vagrantBaseBox',function(err,db) {
 	console.log("Connectd to db");					
 	var boxes = db.collection("boxes");
 	var url = "http://www.vagrantbox.es/";

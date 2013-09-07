@@ -11,7 +11,9 @@ var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
-MongoClient.connect('mongodb://admin:pass@paulo.mongohq.com:10035/vagrantBaseBox', function(err, db) {
+var password = process.env.MONGOPASS;
+var username = process.env.MONGOUSER;
+MongoClient.connect('mongodb://'+ username + ':' + password +'@paulo.mongohq.com:10035/vagrantBaseBox', function(err, db) {
     "use strict";
     if(err) throw err;
 
