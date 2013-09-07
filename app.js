@@ -13,7 +13,8 @@ var MongoClient = require('mongodb').MongoClient;
 var app = express();
 var password = process.env.MONGOPASS;
 var username = process.env.MONGOUSER;
-MongoClient.connect('mongodb://'+ username + ':' + password +'@paulo.mongohq.com:10035/vagrantBaseBox', function(err, db) {
+var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password +'@paulo.mongohq.com:10035/vagrantBaseBox'; 
+MongoClient.connect(connection_string,function(err, db) {
     "use strict";
     if(err) throw err;
 
@@ -24,7 +25,6 @@ MongoClient.connect('mongodb://'+ username + ':' + password +'@paulo.mongohq.com
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
-	app.use(express.methodOverride());
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 	

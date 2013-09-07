@@ -3,7 +3,9 @@ var MongoClient = require('mongodb').MongoClient,
  cheerio = require('cheerio');
 var username = process.env.MONGOUSER;
 var password = process.env.MONGOPASS;
-MongoClient.connect('mongodb://'+ username +':'+ password +'@paulo.mongohq.com:10035/vagrantBaseBox',function(err,db) {
+
+var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password +'@paulo.mongohq.com:10035/vagrantBaseBox'; 
+MongoClient.connect(connection_string,function(err, db) {
 	console.log("Connectd to db");					
 	var boxes = db.collection("boxes");
 	var url = "http://www.vagrantbox.es/";
@@ -20,6 +22,7 @@ MongoClient.connect('mongodb://'+ username +':'+ password +'@paulo.mongohq.com:1
 				record.provider = $(cells[0]).text();
 				record.url = $(cells[1]).text();
 				record.size = $(cells[2]).text();
+				record.score = 0;
 				record.tested = false;
 				boxes.update({ name: record.name}, record, {upsert:true,safe:false} , function (err, result) {
 		            "use strict";
