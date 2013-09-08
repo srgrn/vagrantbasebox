@@ -26,27 +26,6 @@ module.exports = exports = function(app,db){
 		});	
 
 	});
-	app.post('/api/score',function(req,res){
-		var name = req.body.name;
-		var score = req.body.score;
-
-		boxes.findOne({"name" : name},function(err,doc){
-			var votes = doc.votes || 0;
-			var newscore = doc.score * votes;
-			console.log("prev score times votes = ",newscore);
-			votes++;
-			console.log(votes);
-			var calc =(Number(newscore)+Number(score))/Number(votes); 	
-			console.log("calc score should be = ",calc);
-			doc.score = calc;
-			doc.votes = votes;
-			boxes.update({ 'name':name},doc,function(err,result){
-				console.log("updated document with new score");
-				console.log(doc);
-				return res.json(doc);
-			});
-		});
-	});
 	app.post('/api/newbox',function(req,res){
 		var params = ['name','provider','url','size'];
 		var newbox = {};
@@ -70,4 +49,17 @@ module.exports = exports = function(app,db){
 			}
 		});		
 	});
+	app.post('/api/voteup',function(req,res){
+		var name = req.body.name;
+		boxes.update({ 'name':name},{ $inc: { score: 1 } },function(err,result){
+				return res.json(result);
+		});
+	});
+	app.post('/api/votedown',function(req,res){
+		var name = req.body.name;
+		boxes.update({ 'name':name},{ $inc: { score: -1 } },function(err,result){
+				return res.json(result);
+		});
+	});
+
 };
