@@ -8,6 +8,7 @@ var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password
 MongoClient.connect(connection_string,function(err, db) {
 	console.log("Connectd to db");					
 	var boxes = db.collection("boxes");
+	boxes.drop();
 	var url = "http://www.vagrantbox.es/";
 		request(url, function(err, resp, body) {
 			if (err) throw err;

@@ -1,0 +1,7 @@
+div.span2
+	Search: input(ng-model="query")
+div.span10
+	ul.boxes
+	li(ng-repeat="box in boxes | filter:query ")
+		a(href="#/boxes/{{box.name}}") {{box.name}}
+
