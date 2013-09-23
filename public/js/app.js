@@ -18,5 +18,4 @@ angular.module('vboxes', [])
 	  .otherwise({
         redirectTo: '/'
       });
-	  $locationProvider.html5Mode(true);
 	});
