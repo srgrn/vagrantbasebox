@@ -22,7 +22,7 @@ MongoClient.connect(connection_string,function(err, db) {
 				if(record.name.indexOf("NameProvider") != -1) return;
 				record.provider = $(cells[0]).text();
 				record.url = $(cells[1]).text();
-				record.size = $(cells[2]).text();
+				record.size = parseInt($(cells[2]).text().replace(/\s?MB/,""));
 				record.score = 0;
 				record.tested = false;
 				boxes.update({ name: record.name}, record, {upsert:true,safe:false} , function (err, result) {

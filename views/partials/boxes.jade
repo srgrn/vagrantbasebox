@@ -15,6 +15,7 @@ div.row.text-center
 		div.span4 url
 		div.span1 size
 		div.span1 score
+div.row	
 	div.span12(ng-repeat="box in boxes | filter:query | orderBy:orderProp")
 		div.span2.offset1
 			a(href="#/boxes/{{box.name}}") {{box.name}}
@@ -23,7 +24,7 @@ div.row.text-center
 		div.span4
 			a(href="box.url") {{box.url}}
 		div.span1
-			{{box.size}}
+			{{box.size}} MB
 		div.span1
 			{{box.score}}
 
