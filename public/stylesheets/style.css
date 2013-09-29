@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+.zeroclipboard-button {
+	text-align: center;
+	background-color: rgb(238, 238, 238);
+	border: 1px solid gray;
+}
