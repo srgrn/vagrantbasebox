@@ -5,13 +5,15 @@ angular.module('vboxes')
 		$http.get('/api/boxes').success(function(data) {
 			$scope.boxes = data;
 		});
-		$scope.voteup = function (boxname){
-			$http.post('api/voteup',{ "name": boxname }).success(function(result){
+		$scope.voteup = function (index){
+			$scope.boxes[index].score++;
+			$http.post('api/voteup',{ "name": $scope.boxes[index].name }).success(function(result){
 				console.log(result);
 			});
 		};
-		$scope.votedown = function (boxname){
-			$http.post('api/votedown',{ "name": boxname }).success(function(result){
+		$scope.votedown = function (index){
+			$scope.boxes[index].score--;
+			$http.post('api/votedown',{ "name": $scope.boxes[index].name }).success(function(result){
 				console.log(result);
 			});
 		};

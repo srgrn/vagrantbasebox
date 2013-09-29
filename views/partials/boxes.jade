@@ -27,9 +27,9 @@ div.row
 			{{box.size}} MB
 		div.span1
 			{{box.score}}
-			button(ng-click="votedown(box.name)")
+			button(ng-click="votedown($index)")
 				i.icon-thumbs-down
-			button(ng-click="voteup(box.name)")	
+			button(ng-click="voteup($index)")	
 				i.icon-thumbs-up
 		
 		
