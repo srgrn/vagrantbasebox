@@ -8,27 +8,27 @@ div.row.text-center
 			option(value="name") Alphabetical
 			option(value="score") Score
 			option(value="size") Size
-div.row.text-center
+div.row
 	div.span12
-		div.span2.offset1 Name
-		div.span2 provider
+		div.span2 Name
+		div.span1 provider
 		div.span4 url
 		div.span1 size
-		div.span1 score
+		div.span2 score
 div.row	
 	div.span12(ng-repeat="box in boxes | filter:query | orderBy:orderProp")
-		div.span2.offset1
-			a(href="#/boxes/{{box.name}}") {{box.name}}
 		div.span2
+			a(href="#/boxes/{{box.name}}") {{box.name}}
+		div.span1
 			{{box.provider}}
 		div.span4
 			a(href="box.url") {{box.url}}
 		div.span1
 			{{box.size}} MB
-		div.span1
-			{{box.score}}
+		div.span2
 			button(ng-click="votedown($index)")
 				i.icon-thumbs-down
+			|  {{box.score}} 
 			button(ng-click="voteup($index)")	
 				i.icon-thumbs-up
 		
