@@ -8,23 +8,28 @@ div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLab
 				form.form-horizontal(role="form")
 					.form-group
 						label.col-lg-2(for="BoxName") Box Name:    
-						input.col-lg-4(type="email" id="BoxName" placeholder="New Box Name")
+						input.col-lg-4(type="text" id="BoxName" placeholder="New Box Name")
+						label.col-lg-2(for="BoxUrl") URL:
+						input.col-lg-4(type="url" id="BoxUrl" placeholder="Box url")
+						label.col-lg-2(for="BoxType") Type:
+						select
+							option(ng-repeat="type in types") {{type}}
 		.modal-footer
 			button.btn.btn-default(type='button', data-dismiss='modal') 
 				| Close
-			button.btn.btn-primary(type='button' ng-click="add()") 
+			button.btn.btn-primary(type='button' ng-click="add()" data-dismiss='modal') 
 				| Save changes
 
-div.row
-	div.span4
+div.row.border
+	div.span3.offset1
 		a(data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg")
 			| Add a box
-	div.span4
-		| Search: 
-		input(ng-model="query")
-	div.span4
-		| Order By:  
-		select(ng-model="orderProp")
+	div.span3
+		label(for="searchQuery") Search: 
+		input(id="searchQuery" type="search" ng-model="query")
+	div.span3
+		label(for="orderQuery") Order By:  
+		select.selectpicker(id="orderQuery" ng-model="orderProp")
 			option(value="name") Alphabetical
 			option(value="score") Score
 			option(value="size") Size
