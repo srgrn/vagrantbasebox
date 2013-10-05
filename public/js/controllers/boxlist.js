@@ -5,6 +5,11 @@ angular.module('vboxes')
 		$http.get('/api/boxes').success(function(data) {
 			$scope.boxes = data;
 		});
+		$scope.toggle = function() {
+			$scope.isVisible = ! $scope.isVisible;
+		};
+		$scope.isVisible = false; // this is for the show hide directive
+
 		$scope.voteup = function (index){
 			$scope.boxes[index].score++;
 			$http.post('api/voteup',{ "name": $scope.boxes[index].name }).success(function(result){
@@ -16,6 +21,10 @@ angular.module('vboxes')
 			$http.post('api/votedown',{ "name": $scope.boxes[index].name }).success(function(result){
 				console.log(result);
 			});
+		};
+		$scope.add = function (box){
+			console.log("Entered here");
+			console.log("here be box");
 		};
 		$location.path('/boxes');
 

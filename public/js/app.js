@@ -3,11 +3,11 @@
 angular.module('vboxes', [])
   .config(function ($routeProvider,$locationProvider) {
     $routeProvider
-      .when('/', {
+      .when('/allo', {
         templateUrl: '/partials/main',
         controller: 'MainCtrl'
       })
-      .when('/boxes', {
+      .when('/', {
 	  	templateUrl: '/partials/boxes',
 		controller: 'BoxlistCtrl'
 	  })

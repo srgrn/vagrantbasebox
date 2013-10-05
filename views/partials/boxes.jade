@@ -1,8 +1,28 @@
-div.row.text-center
-	div.span6
+div#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal', aria-hidden='true') x 
+				h4.modal-title Modal title
+			.modal-body
+				form.form-horizontal(role="form")
+					.form-group
+						label.col-lg-2(for="BoxName") Box Name:    
+						input.col-lg-4(type="email" id="BoxName" placeholder="New Box Name")
+		.modal-footer
+			button.btn.btn-default(type='button', data-dismiss='modal') 
+				| Close
+			button.btn.btn-primary(type='button' ng-click="add()") 
+				| Save changes
+
+div.row
+	div.span4
+		a(data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg")
+			| Add a box
+	div.span4
 		| Search: 
 		input(ng-model="query")
-	div.span6
+	div.span4
 		| Order By:  
 		select(ng-model="orderProp")
 			option(value="name") Alphabetical
