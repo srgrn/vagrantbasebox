@@ -26,6 +26,6 @@ angular.module('vboxes')
 			console.log("Entered here");
 			console.log("here be box");
 		};
-		$location.path('/boxes');
+		$location.path('/');
 
   });

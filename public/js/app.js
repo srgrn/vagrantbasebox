@@ -8,14 +8,14 @@ angular.module('vboxes', [])
         controller: 'MainCtrl'
       })
       .when('/', {
-	  	templateUrl: '/partials/boxes',
-		controller: 'BoxlistCtrl'
-	  })
-	  .when('/boxes/:boxname', {
-	  	templateUrl: '/partials/specificbox',
-		controller: 'BoxCtrl'
-	  })
-	  .otherwise({
+				templateUrl: '/partials/boxes',
+				controller: 'BoxlistCtrl'
+			})
+			.when('/boxes/:boxname', {
+				templateUrl: '/partials/specificbox',
+				controller: 'BoxCtrl'
+			})
+			.otherwise({
         redirectTo: '/'
       });
 	});
