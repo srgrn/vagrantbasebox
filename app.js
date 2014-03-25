@@ -13,7 +13,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 var password = process.env.MONGOPASS;
 var username = process.env.MONGOUSER;
-var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password +'@paulo.mongohq.com:10035/vagrantBaseBox'; 
+var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password +'@oceanic.mongohq.com:10031/vagrantBaseBox'; 
 MongoClient.connect(connection_string,function(err, db) {
 
 	"use strict";

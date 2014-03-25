@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient,
 var username = process.env.MONGOUSER;
 var password = process.env.MONGOPASS;
 
-var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password +'@paulo.mongohq.com:10035/vagrantBaseBox'; 
+var connection_string = process.env.DB ||'mongodb://'+ username + ':' + password +'@oceanic.mongohq.com:10031/vagrantBaseBox'; 
 MongoClient.connect(connection_string,function(err, db) {
 	if (err) { console.log(err);}
 	console.log("Connectd to db");					
