@@ -26,7 +26,7 @@ MongoClient.connect(connection_string,function(err, db) {
 			file = require('file')
 		
 		var ret = [];
-		var start = "public/js";
+		var start = "public/";
 		file.walkSync(start,function(start,dirs,names){
 			var rel = _.rest(start.split(path.sep)).join(path.sep);	
 			_.each(names,function(elem){

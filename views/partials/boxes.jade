@@ -40,7 +40,8 @@ div.row
 		div.span4 url
 		div.span1 size
 		div.span2 score
-div.row	
+
+div.row
 	div.span12(ng-repeat="box in boxes | filter:query | orderBy:orderProp")
 		div.span2
 			a(href="#/boxes/{{box.name}}") {{box.name}}
@@ -51,10 +52,10 @@ div.row
 		div.span1
 			{{box.size}} MB
 		div.span2
-			button(ng-click="votedown($index)")
+			button.btn.default(ng-click="votedown($index)")
 				i.icon-thumbs-down
-			|  {{box.score}} 
-			button(ng-click="voteup($index)")	
+			|  {{box.score}}
+			button.btn.default(ng-click="voteup($index)")
 				i.icon-thumbs-up
 		
 		
